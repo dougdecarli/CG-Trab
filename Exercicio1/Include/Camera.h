@@ -47,7 +47,7 @@ public:
     float fov;
 
     // Velocidade de movimento da camera
-    static constexpr float cameraSpeed = 0.05f;
+    static constexpr float cameraSpeed = 0.09f;
 
 private:
     // Valores para transformacao

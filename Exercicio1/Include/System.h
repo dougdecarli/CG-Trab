@@ -12,7 +12,6 @@
 // External Libs
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "SOIL.h"
 
 // GLM Includes
 #include <glm/glm.hpp>
@@ -45,7 +44,7 @@ public:
 	int OpenGLSetup();
 	int SystemSetup();
 
-	void Run(map<string, Mesh*> meshs, map<string, char*> textures, string initial);
+	void Run(map<string, Mesh*> meshs, map<string, char*> textures, string initial, string second);
 
 	void Finish();
 

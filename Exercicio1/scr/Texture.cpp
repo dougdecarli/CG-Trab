@@ -25,7 +25,7 @@ void Texture::Load(char* path, char* textureUniformName, GLuint shaderProgram, G
     glActiveTexture( GL_TEXTURE0 + this->textureNum );
     glBindTexture( GL_TEXTURE_2D, textureID );
 
-//    AssetManager::LoadImage( path );
+    AssetManager::LoadImage( path );
 
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );

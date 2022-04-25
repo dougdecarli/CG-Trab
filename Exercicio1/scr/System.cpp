@@ -76,10 +76,12 @@ int System::SystemSetup()
 	return EXIT_SUCCESS;
 }
 
-void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string initial)
+void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string first, string second)
 {
-	Mesh* mesh = meshs.find(initial)->second;
-	char* texturePath = textures.find(initial)->second;
+	Mesh* mesh1 = meshs.find(first)->second;
+    Mesh* mesh2 = meshs.find(second)->second;
+	char* texturePath1 = textures.find(first)->second;
+    char* texturePath2 = textures.find(second)->second;
     
     std::shared_ptr<Camera> cam;
     cam = std::make_shared<Camera>();
@@ -89,20 +91,21 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
     glfwSetScrollCallback (window, Camera::scroll_callback);
 
 	coreShader.Use();
-	coreShader.LoadTexture(texturePath, "texture1", "woodTexture");
+	coreShader.LoadTexture(texturePath1, "texture1", "woodTexture");
+    coreShader.LoadTexture(texturePath2, "texture2", "troutTexture");
 
 	glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float) WIDTH / (float) HEIGHT, 0.1f, 100.0f);
 
 	coreShader.setMatrix4fv("projection", proj);
 
-	for (Group* group : mesh->getGroups()) {
+	for (Group* group : mesh1->getGroups()) {
 		vector<float> vertices;
 		vector<float> normais;
 		vector<float> textures;
 
 		for (Face* face : group->getFaces()) {
 			for (int verticeID : face->getVertices()) {
-				glm::vec3* vertice = mesh->vertice(verticeID - 1);
+				glm::vec3* vertice = mesh1->vertice(verticeID - 1);
 				vertices.push_back(vertice->x);
 				vertices.push_back(vertice->y);
 				vertices.push_back(vertice->z);
@@ -111,14 +114,14 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
 			}
 
 			for (int normalID : face->getNormais()) {
-				glm::vec3* normal = mesh->normal(normalID - 1);
+				glm::vec3* normal = mesh1->normal(normalID - 1);
 				normais.push_back(normal->x);
 				normais.push_back(normal->y);
 				normais.push_back(normal->z);
 			}
 
 			for (int textureID : face->getTextures()) {
-				glm::vec2* texture = mesh->texture(textureID - 1);
+				glm::vec2* texture = mesh1->texture(textureID - 1);
 				textures.push_back(texture->x);
 				textures.push_back(texture->y);
 			}
@@ -156,6 +159,68 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
 		
 		group->setVAO(&VAO);
 	}
+    
+    for (Group* group : mesh2->getGroups()) {
+        vector<float> vertices;
+        vector<float> normais;
+        vector<float> textures;
+
+        for (Face* face : group->getFaces()) {
+            for (int verticeID : face->getVertices()) {
+                glm::vec3* vertice = mesh2->vertice(verticeID - 1);
+                vertices.push_back(vertice->x);
+                vertices.push_back(vertice->y);
+                vertices.push_back(vertice->z);
+
+                group->increaseNumVertices();
+            }
+
+            for (int normalID : face->getNormais()) {
+                glm::vec3* normal = mesh2->normal(normalID - 1);
+                normais.push_back(normal->x);
+                normais.push_back(normal->y);
+                normais.push_back(normal->z);
+            }
+
+            for (int textureID : face->getTextures()) {
+                glm::vec2* texture = mesh2->texture(textureID - 1);
+                textures.push_back(texture->x);
+                textures.push_back(texture->y);
+            }
+        }
+
+        GLuint VBOvertices, VBOnormais, VBOtextures, VAO;
+        glGenVertexArrays(1, &VAO);
+        glGenBuffers(1, &VBOvertices);
+        glGenBuffers(1, &VBOnormais);
+        glGenBuffers(1, &VBOtextures);
+
+        // Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).
+        glBindVertexArray(VAO);
+
+        // Vertices
+        glBindBuffer(GL_ARRAY_BUFFER, VBOvertices);
+        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
+        glEnableVertexAttribArray(0);
+
+        // Normais
+        glBindBuffer(GL_ARRAY_BUFFER, VBOnormais);
+        glBufferData(GL_ARRAY_BUFFER, normais.size() * sizeof(float), normais.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
+        glEnableVertexAttribArray(1);
+
+        // Textures
+        glBindBuffer(GL_ARRAY_BUFFER, VBOtextures);
+        glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(float), textures.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*) 0);
+        glEnableVertexAttribArray(2);
+        
+        group->setVAO(&VAO);
+    }
 
 	float camX = 5.0f;
 	float camY = 0.5f;
@@ -231,10 +296,15 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
 		coreShader.setMatrix4fv("model", model);
 		coreShader.UseTexture("woodTexture");
 
-		for (Group* group : mesh->getGroups()) {
+		for (Group* group : mesh1->getGroups()) {
 			glBindVertexArray(group->getVAO());
 			glDrawArrays(GL_TRIANGLES, 0, group->getNumVertices());
 		}
+        
+        for (Group* group : mesh2->getGroups()) {
+            glBindVertexArray(group->getVAO());
+            glDrawArrays(GL_TRIANGLES, 0, group->getNumVertices());
+        }
 
 		glfwSwapBuffers(window);
 	}

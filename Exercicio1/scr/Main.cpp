@@ -1,16 +1,14 @@
 #include "System.h"
 
-#define EXIT_FAILURE -1
-#define EXIT_SUCCESS 0
 
 int main() {
 	map<string, Mesh*> meshs;
 	meshs["mesa"] = ObjReader::read("/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/mesa01.obj");
-	//meshs["trout"] = ObjReader::read("Objects/trout.obj");
-
+	meshs["trout"] = ObjReader::read("/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/mesa01.obj");
+    
 	map<string, char*> textures;
 	textures["mesa"] = "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/mesa01.bmp";
-	textures["trout"] = "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/trout.bmp";
+	textures["trout"] = "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/mesa01.bmp";
 
 	System system;
 
@@ -24,7 +22,7 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-	system.Run(meshs, textures, "mesa");
+	system.Run(meshs, textures, "mesa", "trout");
 
 	system.Finish();
 
