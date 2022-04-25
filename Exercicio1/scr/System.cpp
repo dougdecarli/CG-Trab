@@ -83,6 +83,10 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
     
     std::shared_ptr<Camera> cam;
     cam = std::make_shared<Camera>();
+    Camera::bind_instance (cam);
+    
+    glfwSetCursorPosCallback (window, Camera::mouse_callback);
+    glfwSetScrollCallback (window, Camera::scroll_callback);
 
 	coreShader.Use();
 	coreShader.LoadTexture(texturePath, "texture1", "woodTexture");
