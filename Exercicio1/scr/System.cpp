@@ -1,6 +1,17 @@
 #include "System.h"
 #include "Mesh.h"
 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <memory>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include "camera.h"
+
 System::System() {}
 
 System::~System() {}
@@ -53,10 +64,6 @@ int System::OpenGLSetup()
 
 	glEnable( GL_DEPTH_TEST );
 
-	// glEnable( GL_CULL_FACE );
-	// glCullFace( GL_BACK );
-	// glFrontFace( GL_CW );
-
 	return EXIT_SUCCESS;
 }
 
@@ -73,11 +80,12 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
 {
 	Mesh* mesh = meshs.find(initial)->second;
 	char* texturePath = textures.find(initial)->second;
+    
+    std::shared_ptr<Camera> cam;
+    cam = std::make_shared<Camera>();
 
 	coreShader.Use();
 	coreShader.LoadTexture(texturePath, "texture1", "woodTexture");
-
-	// glm::ortho(0.0f, (float) WIDTH, 0.0f, (float) HEIGHT, 0.1f, 100.0f);
 
 	glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float) WIDTH / (float) HEIGHT, 0.1f, 100.0f);
 
@@ -143,7 +151,6 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
 		glEnableVertexAttribArray(2);
 		
 		group->setVAO(&VAO);
-		//glBindVertexArray(0); // Unbind VAO
 	}
 
 	float camX = 5.0f;
@@ -159,73 +166,45 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
 
 		glfwPollEvents();
 
-#pragma region Input Handling
-
 		if ( glfwGetKey( window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ) {
 			glfwSetWindowShouldClose( window, GLFW_TRUE );
 		}
+        
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+            cam->cameraPos += cam->cameraSpeed * cam->cameraFront;
+            cam->cameraUpdated = true;
+        }
 
-		if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-			camZ -= 0.01f;
-		}
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+            cam->cameraPos -= cam->cameraSpeed * cam->cameraFront;
+            cam->cameraUpdated = true;
+        }
 
-		if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS && camZ > 0) {
-			camZ += 0.01f;
-		}
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+            cam->cameraPos -= glm::normalize(glm::cross(cam->cameraFront, cam->cameraUp)) * cam->cameraSpeed;
+            cam->cameraUpdated = true;
+        }
 
-		if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-			camX -= 0.01f;
-		}
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+            cam->cameraPos += glm::normalize(glm::cross(cam->cameraFront, cam->cameraUp)) * cam->cameraSpeed;
+            cam->cameraUpdated = true;
+        }
 
-		if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-			camX += 0.01f;
-		}
+        if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
+            translateX += 0.09f;
+        }
 
-		if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
-			angle += 0.1f;
-		}
+        if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+            translateZ += 0.09f;
+        }
 
-		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-			angle -= 0.1f;
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
-			translateX += 0.01f;
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-			translateX -= 0.01f;
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) {
-			translateY += 0.01f;
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS) {
-			translateY -= 0.01f;
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
-			translateZ += 0.01f;
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-			translateZ -= 0.01f;
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
-			Run(meshs, textures, "trout");
-		}
-
-		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
-			Run(meshs, textures, "mesa");
-		}
+        if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) {
+            translateY += 0.09f;
+        }
 
 		if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
 			cout << "X: " << translateX << " - Y: " << translateY << " - Z: " << translateZ << endl;
 		}
-
-#pragma endregion
 
 		glClearColor( 0.2f, 0.3f, 0.3f, 1.0f );
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -233,9 +212,7 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string i
 		coreShader.Use();
 
 		glm::mat4 view(1.0f);
-		view = glm::lookAt(glm::vec3(camX, camY, camZ),
-			glm::vec3(0.0f, 0.0f, 0.0f),
-			glm::vec3(0.0f, 1.0f, 0.0f));
+		view = glm::lookAt (cam->cameraPos, cam->cameraPos+cam->cameraFront, cam->cameraUp);
 
 		coreShader.setMatrix4fv("view", view);
 

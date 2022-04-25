@@ -12,6 +12,7 @@
 		4B082CA028162487003630DA /* image_DXT.c in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B082C9C28162487003630DA /* image_DXT.c */; };
 		4B082CA128162487003630DA /* image_helper.c in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B082C9D28162487003630DA /* image_helper.c */; };
 		4B082CBE2816271F003630DA /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B082CBD2816271F003630DA /* Main.cpp */; };
+		4B082CE42816D1FE003630DA /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B082CE22816D1FE003630DA /* Camera.cpp */; };
 		4B70CCE4281617D0003F681F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B70CCDC281617D0003F681F /* Texture.cpp */; };
 		4B70CCE5281617D0003F681F /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B70CCDD281617D0003F681F /* System.cpp */; };
 		4B70CCE6281617D0003F681F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B70CCDE281617D0003F681F /* Shader.cpp */; };
@@ -48,6 +49,8 @@
 		4B082CDC2816287F003630DA /* stbi_DDS_aug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_DDS_aug.h; sourceTree = "<group>"; };
 		4B082CDD2816287F003630DA /* image_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_helper.h; sourceTree = "<group>"; };
 		4B082CDE2816287F003630DA /* image_DXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_DXT.h; sourceTree = "<group>"; };
+		4B082CE22816D1FE003630DA /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		4B082CE32816D1FE003630DA /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		4B70CCD3281617C5003F681F /* System.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
 		4B70CCD4281617C5003F681F /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		4B70CCD5281617C5003F681F /* Texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 				4B70CCD4281617C5003F681F /* Mesh.h */,
 				4B70CCDA281617C5003F681F /* ObjReader.h */,
 				4B70CCD8281617C5003F681F /* Shader.h */,
+				4B082CE32816D1FE003630DA /* Camera.h */,
 				4B70CCD3281617C5003F681F /* System.h */,
 				4B70CCD5281617C5003F681F /* Texture.h */,
 			);
@@ -147,6 +151,7 @@
 				4B082CBD2816271F003630DA /* Main.cpp */,
 				4B70CCDD281617D0003F681F /* System.cpp */,
 				4B70CCDC281617D0003F681F /* Texture.cpp */,
+				4B082CE22816D1FE003630DA /* Camera.cpp */,
 			);
 			path = scr;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 			files = (
 				4B70CCE8281617D0003F681F /* Face.cpp in Sources */,
 				4B70CCE5281617D0003F681F /* System.cpp in Sources */,
+				4B082CE42816D1FE003630DA /* Camera.cpp in Sources */,
 				4B70CCE4281617D0003F681F /* Texture.cpp in Sources */,
 				4B70CCEA281617D0003F681F /* Mesh.cpp in Sources */,
 				4B082CBE2816271F003630DA /* Main.cpp in Sources */,
