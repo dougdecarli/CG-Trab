@@ -1,6 +1,6 @@
 # CG-Trab
 
-#Teclas:
+# Teclas:
 Controle de câmera:
 W, S, A, D
 
