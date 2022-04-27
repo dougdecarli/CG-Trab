@@ -81,12 +81,10 @@ int System::SystemSetup()
 	return EXIT_SUCCESS;
 }
 
-void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string first, string second)
+void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string first)
 {
-	Mesh* mesh1 = meshs.find(first)->second;
-    Mesh* mesh2 = meshs.find(second)->second;
-	char* texturePath1 = textures.find(first)->second;
-    char* texturePath2 = textures.find(second)->second;
+	Mesh* mesh = meshs.find(first)->second;
+	char* texturePath = textures.find(first)->second;
     
     std::shared_ptr<Camera> cam;
     cam = std::make_shared<Camera>();
@@ -96,27 +94,25 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
     glfwSetScrollCallback (window, Camera::scroll_callback);
 
 	coreShader.Use();
-	coreShader.LoadTexture(texturePath1, "texture1", "t1");
-    coreShader.LoadTexture(texturePath2, "texture2", "t2");
+	coreShader.LoadTexture(texturePath, "texture1", "t1");
 
 	glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float) WIDTH / (float) HEIGHT, 0.1f, 100.0f);
 
 	coreShader.setMatrix4fv("projection", proj);
 
-    AddObject(mesh1);
-    AddObject(mesh2);
+    AddObject(mesh);
 
 	float camX = 5.0f;
 	float camY = 0.5f;
 	float camZ = 5.0f;
 
-	float angle = 2.0f;
+	float angle = 0.0f;
 	float translateX = 0.0f;
 	float translateY = 0.0f;
 	float translateZ = 0.0f;
     
     RotationStatus rotationStatus = none;
-	
+
 	while ( !glfwWindowShouldClose( window ) ) {
 
 		glfwPollEvents();
@@ -157,18 +153,28 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
             translateY += 0.09f;
         }
         
+        if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS) {
+            translateX -= 0.09f;
+        }
+
+        if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
+            translateZ -= 0.09f;
+        }
+
+        if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) {
+            translateY -= 0.09f;
+        }
+        
         if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
             rotationStatus = X;
         }
 
         if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
             rotationStatus = Y;
-//            angle += 0.9f;
         }
 
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
             rotationStatus = Z;
-//            angle += 0.9f;
         }
 
 		if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
@@ -188,35 +194,40 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
 		coreShader.setVec3("lightColor", vec3(1.0f, 1.0f, 1.0f));
 		coreShader.setVec3("lightPos", vec3(-5.0f, -5.0f, -10.0f));
 		coreShader.setVec3("viewPos", vec3(camX, camY, camZ));
-
-		glm::mat4 model(1.0f);
+        
+        glm::mat4 model(1.0f);
+        
         switch (rotationStatus) {
             case none:
                 break;
             case X:
-                model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.0f, 0.0f));
+                model = glm::translate(model, glm::vec3(translateX, translateY, translateZ)) * glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.0f, 0.0f));
+                angle += 0.9f;
+                rotationStatus = none;
+                break;
             case Y:
                 model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+                angle += 0.9f;
+                rotationStatus = none;
+                break;
             case Z:
                 model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+                angle += 0.9f;
+                rotationStatus = none;
+                break;
             default:
                 break;
         }
-		model = glm::translate(model, glm::vec3(translateX, translateY, translateZ));
+        
+        model = glm::translate(model, glm::vec3(translateX, translateY, translateZ));
 
 		coreShader.setMatrix4fv("model", model);
 		coreShader.UseTexture("t1");
-        coreShader.UseTexture("t2");
 
-		for (Group* group : mesh1->getGroups()) {
+		for (Group* group : mesh->getGroups()) {
 			glBindVertexArray(group->getVAO());
 			glDrawArrays(GL_TRIANGLES, 0, group->getNumVertices());
 		}
-        
-        for (Group* group : mesh2->getGroups()) {
-            glBindVertexArray(group->getVAO());
-            glDrawArrays(GL_TRIANGLES, 0, group->getNumVertices());
-        }
 
 		glfwSwapBuffers(window);
 	}
