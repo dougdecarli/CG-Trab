@@ -45,6 +45,7 @@ public:
 	int SystemSetup();
 
 	void Run(map<string, Mesh*> meshs, map<string, char*> textures, string initial, string second);
+    void AddObject(Mesh* mesh);
 
 	void Finish();
 

@@ -6,26 +6,25 @@ using namespace std;
 class Face
 {
 private:
-	vector<int> vertices;
-	vector<int> normais;
-	vector<int> textures;
+    vector<int> vertices;
+    vector<int> normais;
+    vector<int> textures;
 
 public:
-	Face();
-	~Face();
-	int addVertice(int v);
-	void push(int v, int n, int t);
+    Face();
+    ~Face();
+    int addVertice(int v);
+    void push(int v, int n, int t);
 
-	vector<int> getVertices() {
-		return vertices;
-	}
+    vector<int> getVertices() {
+        return vertices;
+    }
 
-	vector<int> getNormais() {
-		return vertices;
-	}
+    vector<int> getNormais() {
+        return vertices;
+    }
 
-	vector<int> getTextures() {
-		return vertices;
-	}
+    vector<int> getTextures() {
+        return vertices;
+    }
 };
-

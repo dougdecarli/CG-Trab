@@ -12,6 +12,10 @@
 
 #include "camera.h"
 
+enum RotationStatus {
+  none, X, Y, Z
+};
+
 System::System() {}
 
 System::~System() {}
@@ -27,7 +31,7 @@ int System::GLFWInit()
     glfwWindowHint (GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-	window = glfwCreateWindow( WIDTH, HEIGHT, "Sabertooth", nullptr, nullptr );
+	window = glfwCreateWindow( WIDTH, HEIGHT, "Trab GA", nullptr, nullptr );
 
 	glfwGetFramebufferSize( window, &screenWidth, &screenHeight );
 
@@ -70,7 +74,8 @@ int System::OpenGLSetup()
 int System::SystemSetup()
 {
 
-	coreShader = Shader( "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Shaders/core.vert", "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Shaders/core.frag" );
+	coreShader = Shader( "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Shaders/core.vert",
+                        "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Shaders/core.frag" );
 	coreShader.Use();
 
 	return EXIT_SUCCESS;
@@ -98,138 +103,19 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
 
 	coreShader.setMatrix4fv("projection", proj);
 
-	for (Group* group : mesh1->getGroups()) {
-		vector<float> vertices;
-		vector<float> normais;
-		vector<float> textures;
-
-		for (Face* face : group->getFaces()) {
-			for (int verticeID : face->getVertices()) {
-				glm::vec3* vertice = mesh1->vertice(verticeID - 1);
-				vertices.push_back(vertice->x);
-				vertices.push_back(vertice->y);
-				vertices.push_back(vertice->z);
-
-				group->increaseNumVertices();
-			}
-
-			for (int normalID : face->getNormais()) {
-				glm::vec3* normal = mesh1->normal(normalID - 1);
-				normais.push_back(normal->x);
-				normais.push_back(normal->y);
-				normais.push_back(normal->z);
-			}
-
-			for (int textureID : face->getTextures()) {
-				glm::vec2* texture = mesh1->texture(textureID - 1);
-				textures.push_back(texture->x);
-				textures.push_back(texture->y);
-			}
-		}
-
-		GLuint VBOvertices, VBOnormais, VBOtextures, VAO;
-		glGenVertexArrays(1, &VAO);
-		glGenBuffers(1, &VBOvertices);
-		glGenBuffers(1, &VBOnormais);
-		glGenBuffers(1, &VBOtextures);
-
-		// Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).
-		glBindVertexArray(VAO);
-
-		// Vertices
-		glBindBuffer(GL_ARRAY_BUFFER, VBOvertices);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
-
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
-		glEnableVertexAttribArray(0);
-
-		// Normais
-		glBindBuffer(GL_ARRAY_BUFFER, VBOnormais);
-		glBufferData(GL_ARRAY_BUFFER, normais.size() * sizeof(float), normais.data(), GL_STATIC_DRAW);
-
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
-		glEnableVertexAttribArray(1);
-
-		// Textures
-		glBindBuffer(GL_ARRAY_BUFFER, VBOtextures);
-		glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(float), textures.data(), GL_STATIC_DRAW);
-
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*) 0);
-		glEnableVertexAttribArray(2);
-		
-		group->setVAO(&VAO);
-	}
-    
-    for (Group* group : mesh2->getGroups()) {
-        vector<float> vertices;
-        vector<float> normais;
-        vector<float> textures;
-
-        for (Face* face : group->getFaces()) {
-            for (int verticeID : face->getVertices()) {
-                glm::vec3* vertice = mesh2->vertice(verticeID - 1);
-                vertices.push_back(vertice->x);
-                vertices.push_back(vertice->y);
-                vertices.push_back(vertice->z);
-
-                group->increaseNumVertices();
-            }
-
-            for (int normalID : face->getNormais()) {
-                glm::vec3* normal = mesh2->normal(normalID - 1);
-                normais.push_back(normal->x);
-                normais.push_back(normal->y);
-                normais.push_back(normal->z);
-            }
-
-            for (int textureID : face->getTextures()) {
-                glm::vec2* texture = mesh2->texture(textureID - 1);
-                textures.push_back(texture->x);
-                textures.push_back(texture->y);
-            }
-        }
-
-        GLuint VBOvertices, VBOnormais, VBOtextures, VAO;
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBOvertices);
-        glGenBuffers(1, &VBOnormais);
-        glGenBuffers(1, &VBOtextures);
-
-        // Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).
-        glBindVertexArray(VAO);
-
-        // Vertices
-        glBindBuffer(GL_ARRAY_BUFFER, VBOvertices);
-        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
-        glEnableVertexAttribArray(0);
-
-        // Normais
-        glBindBuffer(GL_ARRAY_BUFFER, VBOnormais);
-        glBufferData(GL_ARRAY_BUFFER, normais.size() * sizeof(float), normais.data(), GL_STATIC_DRAW);
-
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
-        glEnableVertexAttribArray(1);
-
-        // Textures
-        glBindBuffer(GL_ARRAY_BUFFER, VBOtextures);
-        glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(float), textures.data(), GL_STATIC_DRAW);
-
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*) 0);
-        glEnableVertexAttribArray(2);
-        
-        group->setVAO(&VAO);
-    }
+    AddObject(mesh1);
+    AddObject(mesh2);
 
 	float camX = 5.0f;
 	float camY = 0.5f;
 	float camZ = 5.0f;
 
-	float angle = 20.0f;
+	float angle = 2.0f;
 	float translateX = 0.0f;
 	float translateY = 0.0f;
 	float translateZ = 0.0f;
+    
+    RotationStatus rotationStatus = none;
 	
 	while ( !glfwWindowShouldClose( window ) ) {
 
@@ -270,10 +156,33 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
         if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) {
             translateY += 0.09f;
         }
+        
+        if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
+            rotationStatus = X;
+            angle += 0.9f;
+        }
+
+        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+            rotationStatus = Y;
+            angle += 0.9f;
+        }
+
+        if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+            rotationStatus = Z;
+            angle += 0.9f;
+        }
 
 		if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
 			cout << "X: " << translateX << " - Y: " << translateY << " - Z: " << translateZ << endl;
 		}
+        
+        if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
+//            Run(meshs, textures, "trout");
+        }
+        
+        if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
+//            Run(meshs, textures, "mesa");
+        }
 
 		glClearColor( 0.2f, 0.3f, 0.3f, 1.0f );
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -290,7 +199,18 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
 		coreShader.setVec3("viewPos", vec3(camX, camY, camZ));
 
 		glm::mat4 model(1.0f);
-		model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        switch (rotationStatus) {
+            case none:
+                break;
+            case X:
+                model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.0f, 0.0f));
+            case Y:
+                model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+            case Z:
+                model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+            default:
+                break;
+        }
 		model = glm::translate(model, glm::vec3(translateX, translateY, translateZ));
 
 		coreShader.setMatrix4fv("model", model);
@@ -308,6 +228,73 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
 
 		glfwSwapBuffers(window);
 	}
+}
+
+void System::AddObject(Mesh* mesh)
+{
+    for (Group* group : mesh->getGroups()) {
+        vector<float> vertices;
+        vector<float> normais;
+        vector<float> textures;
+
+        for (Face* face : group->getFaces()) {
+            for (int verticeID : face->getVertices()) {
+                glm::vec3* vertice = mesh->vertice(verticeID - 1);
+                vertices.push_back(vertice->x);
+                vertices.push_back(vertice->y);
+                vertices.push_back(vertice->z);
+
+                group->increaseNumVertices();
+            }
+
+            for (int normalID : face->getNormais()) {
+                glm::vec3* normal = mesh->normal(normalID - 1);
+                if (normal != NULL) {
+                    normais.push_back(normal->x);
+                    normais.push_back(normal->y);
+                    normais.push_back(normal->z);
+                }
+            }
+
+            for (int textureID : face->getTextures()) {
+                glm::vec2* texture = mesh->texture(textureID - 1);
+                textures.push_back(texture->x);
+                textures.push_back(texture->y);
+            }
+        }
+
+        GLuint VBOvertices, VBOnormais, VBOtextures, VAO;
+        glGenVertexArrays(1, &VAO);
+        glGenBuffers(1, &VBOvertices);
+        glGenBuffers(1, &VBOnormais);
+        glGenBuffers(1, &VBOtextures);
+
+        // Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).
+        glBindVertexArray(VAO);
+
+        // Vertices
+        glBindBuffer(GL_ARRAY_BUFFER, VBOvertices);
+        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
+        glEnableVertexAttribArray(0);
+
+        // Normais
+        glBindBuffer(GL_ARRAY_BUFFER, VBOnormais);
+        glBufferData(GL_ARRAY_BUFFER, normais.size() * sizeof(float), normais.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
+        glEnableVertexAttribArray(1);
+
+        // Textures
+        glBindBuffer(GL_ARRAY_BUFFER, VBOtextures);
+        glBufferData(GL_ARRAY_BUFFER, textures.size() * sizeof(float), textures.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*) 0);
+        glEnableVertexAttribArray(2);
+        
+        group->setVAO(&VAO);
+    }
 }
 
 void System::Finish()
