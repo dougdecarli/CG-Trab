@@ -15,14 +15,9 @@ Mesh* ObjReader::read(string filename)
 
     ifstream arq(filename);
 
-    // cout << "Lendo arquivo: " << filename << endl;
-
     if (!arq) {
-        // cout << "- Arquivo de objeto nao encontrado" << endl;
         exit(EXIT_FAILURE);
     }
-
-    // cout << endl;
 
     while (!arq.eof()) {
         string line;
@@ -30,16 +25,12 @@ Mesh* ObjReader::read(string filename)
 
         stringstream sline(line);
 
-        // l� tipo de elemento
         string temp;
         sline >> temp;
 
         if (temp.empty() || temp == "#") {
             continue;
         }
-
-        // cout << "Linha lida: " << line << endl;
-        // cout << "- Tipo: " << temp << endl;
 
         if (temp == "mtllib") {
             material(mesh, sline);
@@ -72,7 +63,6 @@ Mesh* ObjReader::read(string filename)
 
         }
 
-        // cout << endl;
     }
 
     arq.close();
@@ -90,21 +80,18 @@ void ObjReader::material(Mesh* mesh, stringstream& sline) {
 void ObjReader::vertice(Mesh* mesh, stringstream &sline) {
     float x, y, z;
     sline >> x >> y >> z;
-    // cout << "  Resultado: vec3(" << x << ", " << y << ", " << z << ")" << endl;
     mesh->addVertice(new glm::vec3(x, y, z));
 }
 
 void ObjReader::normal(Mesh* mesh, stringstream& sline) {
     float x, y, z;
     sline >> x >> y >> z;
-    // cout << "  Resultado: vec3(" << x << ", " << y << ", " << z << ")" << endl;
     mesh->addNormal(new glm::vec3(x, y, z));
 }
 
 void ObjReader::texture(Mesh* mesh, stringstream& sline) {
     float x, y;
     sline >> x >> y;
-    // cout << "  Resultado: vec2(" << x << ", " << y << ")" << endl;
     mesh->addTexture(new glm::vec2(x, y));
 }
 
@@ -129,11 +116,6 @@ void ObjReader::face(Group* group, stringstream& sline) {
         int v = getNextTokenValue(stoken);
         int t = getNextTokenValue(stoken);
         int n = getNextTokenValue(stoken);
-
-        // cout << "  Resultado de " << token << ": " << endl;
-        // cout << "   - Vertice: " << v << endl;
-        // cout << "   - Textura: " << t << endl;
-        // cout << "   - Normal:  " << n << endl;
 
         face->push(v, n, t);
     }

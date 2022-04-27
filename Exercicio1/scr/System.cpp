@@ -201,18 +201,18 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
             case none:
                 break;
             case X:
-                model = glm::translate(model, glm::vec3(translateX, translateY, translateZ)) * glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.0f, 0.0f));
-                angle += 0.9f;
+                model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.0f, 0.0f));
+                angle += 2.0f;
                 rotationStatus = none;
                 break;
             case Y:
                 model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
-                angle += 0.9f;
+                angle += 2.0f;
                 rotationStatus = none;
                 break;
             case Z:
                 model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
-                angle += 0.9f;
+                angle += 2.0f;
                 rotationStatus = none;
                 break;
             default:
