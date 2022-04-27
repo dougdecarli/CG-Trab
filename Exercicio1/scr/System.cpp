@@ -96,8 +96,8 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
     glfwSetScrollCallback (window, Camera::scroll_callback);
 
 	coreShader.Use();
-	coreShader.LoadTexture(texturePath1, "texture1", "woodTexture");
-    coreShader.LoadTexture(texturePath2, "texture2", "troutTexture");
+	coreShader.LoadTexture(texturePath1, "texture1", "t1");
+    coreShader.LoadTexture(texturePath2, "texture2", "t2");
 
 	glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float) WIDTH / (float) HEIGHT, 0.1f, 100.0f);
 
@@ -159,30 +159,21 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
         
         if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
             rotationStatus = X;
-            angle += 0.9f;
         }
 
         if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
             rotationStatus = Y;
-            angle += 0.9f;
+//            angle += 0.9f;
         }
 
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
             rotationStatus = Z;
-            angle += 0.9f;
+//            angle += 0.9f;
         }
 
 		if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS) {
 			cout << "X: " << translateX << " - Y: " << translateY << " - Z: " << translateZ << endl;
 		}
-        
-        if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
-//            Run(meshs, textures, "trout");
-        }
-        
-        if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
-//            Run(meshs, textures, "mesa");
-        }
 
 		glClearColor( 0.2f, 0.3f, 0.3f, 1.0f );
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -214,7 +205,8 @@ void System::Run(map<string, Mesh*> meshs, map<string, char*> textures, string f
 		model = glm::translate(model, glm::vec3(translateX, translateY, translateZ));
 
 		coreShader.setMatrix4fv("model", model);
-		coreShader.UseTexture("woodTexture");
+		coreShader.UseTexture("t1");
+        coreShader.UseTexture("t2");
 
 		for (Group* group : mesh1->getGroups()) {
 			glBindVertexArray(group->getVAO());

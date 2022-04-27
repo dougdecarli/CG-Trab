@@ -16,7 +16,6 @@
 		4B8FDB1E27E80A7F0018374A /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8FDB1827E8080B0018374A /* libglfw.3.3.dylib */; };
 		4B8FDB4827E8145F0018374A /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FDB3827E810B30018374A /* glad.c */; };
 		4B9EBAE027E804CE008ADE8C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9EBADF27E804CE008ADE8C /* OpenGL.framework */; };
-		4BBB856C28189D5E00862284 /* RotationStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BBB856A28189D5E00862284 /* RotationStatus.cpp */; };
 		4BBB85802818BDAE00862284 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BBB857E2818BDAE00862284 /* Shader.cpp */; };
 		4BBB85832818BDE400862284 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BBB85812818BDE400862284 /* Mesh.cpp */; };
 		4BBB85862818BE1000862284 /* Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BBB85842818BE1000862284 /* Group.cpp */; };
@@ -47,12 +46,6 @@
 		4B082CE52816EEAD003630DA /* SOIL.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = SOIL.lib; path = SOIL2/lib/SOIL.lib; sourceTree = "<group>"; };
 		4B082D012816F240003630DA /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
 		4B082D032816F249003630DA /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
-		4B082D07281700AD003630DA /* mesa01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mesa01.jpg; sourceTree = "<group>"; };
-		4B082D0A28170435003630DA /* soccer_ball.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soccer_ball.mtl; sourceTree = "<group>"; };
-		4B082D0B28170435003630DA /* soccer_ball.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soccer_ball.obj; sourceTree = "<group>"; };
-		4B082D0C2817046E003630DA /* soccer_ball.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = soccer_ball.bmp; sourceTree = "<group>"; };
-		4B082D0D28170524003630DA /* mesa01.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = mesa01.bmp; sourceTree = "<group>"; };
-		4B082D0E2817055F003630DA /* mesa01.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mesa01.mtl; sourceTree = "<group>"; };
 		4B70CCD3281617C5003F681F /* System.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
 		4B70CCD4281617C5003F681F /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		4B70CCD5281617C5003F681F /* Texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
@@ -65,8 +58,6 @@
 		4B70CCDD281617D0003F681F /* System.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = System.cpp; sourceTree = "<group>"; };
 		4B70CCEB281617D9003F681F /* core.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = core.vert; sourceTree = "<group>"; };
 		4B70CCEC281617D9003F681F /* core.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = core.frag; sourceTree = "<group>"; };
-		4B70CCEE281617E8003F681F /* trout.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = trout.mtl; sourceTree = "<group>"; };
-		4B70CCF2281617E8003F681F /* mesa01.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = mesa01.obj; sourceTree = "<group>"; };
 		4B70CCF928161A4E003F681F /* SOIL.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = SOIL.lib; path = "../cg-trabalhoga-master/External/SOIL2/lib/SOIL.lib"; sourceTree = "<group>"; };
 		4B70CCFB28161A73003F681F /* glew32s.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = glew32s.lib; path = "../cg-trabalhoga-master/External/GLEW/lib/Release/x64/glew32s.lib"; sourceTree = "<group>"; };
 		4B70CCFD28161BC9003F681F /* glmConfig.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; name = glmConfig.cmake; path = ../0.9.9.8/lib/cmake/glm/glmConfig.cmake; sourceTree = "<group>"; };
@@ -76,18 +67,21 @@
 		4B8FDB3827E810B30018374A /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		4B9EBAD427E8044E008ADE8C /* Exercicio1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Exercicio1; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B9EBADF27E804CE008ADE8C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		4BBB856A28189D5E00862284 /* RotationStatus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RotationStatus.cpp; sourceTree = "<group>"; };
-		4BBB856D2818A6B600862284 /* pikachu.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = pikachu.obj; sourceTree = "<group>"; };
-		4BBB85762818AF1000862284 /* pista.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista.mtl; sourceTree = "<group>"; };
-		4BBB85772818AF1000862284 /* pista.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista.obj; sourceTree = "<group>"; };
-		4BBB85782818AF9800862284 /* pista.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pista.jpg; sourceTree = "<group>"; };
-		4BBB85792818AFC900862284 /* trout.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = trout.obj; path = "../../../cg-trabalhoga-master 2/Sabertooth/Objects/trout.obj"; sourceTree = "<group>"; };
-		4BBB857A2818AFC900862284 /* trout.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = trout.bmp; path = "../../../cg-trabalhoga-master 2/Sabertooth/Objects/trout.bmp"; sourceTree = "<group>"; };
 		4BBB857E2818BDAE00862284 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		4BBB85812818BDE400862284 /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		4BBB85842818BE1000862284 /* Group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Group.cpp; sourceTree = "<group>"; };
 		4BBB85872818BE3700862284 /* Face.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Face.cpp; sourceTree = "<group>"; };
 		4BBB858A2818BE5C00862284 /* ObjReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ObjReader.cpp; sourceTree = "<group>"; };
+		4BF98FDE2818F0340007885E /* Pikachu.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pikachu.obj; sourceTree = "<group>"; };
+		4BF98FDF2818F0340007885E /* Pikachu.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pikachu.mtl; sourceTree = "<group>"; };
+		4BF98FE02818F0AC0007885E /* PikachuDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuDh.png; sourceTree = "<group>"; };
+		4BF98FE12818F0AC0007885E /* pm0025_00_Eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_Eye1.png; sourceTree = "<group>"; };
+		4BF98FE22818F0AC0007885E /* pm0025_00_BodyB1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_BodyB1.png; sourceTree = "<group>"; };
+		4BF98FE32818F0AC0007885E /* pm0025_00_Mouth1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_Mouth1.png; sourceTree = "<group>"; };
+		4BF98FE42818F0AC0007885E /* pm0025_00_BodyA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_BodyA1.png; sourceTree = "<group>"; };
+		4BF98FE52818F0AC0007885E /* PikachuEyeDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuEyeDh.png; sourceTree = "<group>"; };
+		4BF98FE62818F0AC0007885E /* PikachuHohoDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuHohoDh.png; sourceTree = "<group>"; };
+		4BF98FE72818F0AC0007885E /* PikachuMouthDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuMouthDh.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +134,6 @@
 				4B70CCDC281617D0003F681F /* Texture.cpp */,
 				4B082CE22816D1FE003630DA /* Camera.cpp */,
 				4B082D012816F240003630DA /* stb_image.cpp */,
-				4BBB856A28189D5E00862284 /* RotationStatus.cpp */,
 			);
 			path = scr;
 			sourceTree = "<group>";
@@ -148,20 +141,16 @@
 		4B70CCED281617E8003F681F /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				4B70CCEE281617E8003F681F /* trout.mtl */,
-				4B082D0C2817046E003630DA /* soccer_ball.bmp */,
-				4B082D0A28170435003630DA /* soccer_ball.mtl */,
-				4B082D0B28170435003630DA /* soccer_ball.obj */,
-				4BBB857A2818AFC900862284 /* trout.bmp */,
-				4BBB85792818AFC900862284 /* trout.obj */,
-				4B082D0E2817055F003630DA /* mesa01.mtl */,
-				4BBB85782818AF9800862284 /* pista.jpg */,
-				4BBB85762818AF1000862284 /* pista.mtl */,
-				4BBB85772818AF1000862284 /* pista.obj */,
-				4BBB856D2818A6B600862284 /* pikachu.obj */,
-				4B082D07281700AD003630DA /* mesa01.jpg */,
-				4B082D0D28170524003630DA /* mesa01.bmp */,
-				4B70CCF2281617E8003F681F /* mesa01.obj */,
+				4BF98FDF2818F0340007885E /* Pikachu.mtl */,
+				4BF98FE02818F0AC0007885E /* PikachuDh.png */,
+				4BF98FE52818F0AC0007885E /* PikachuEyeDh.png */,
+				4BF98FE62818F0AC0007885E /* PikachuHohoDh.png */,
+				4BF98FE72818F0AC0007885E /* PikachuMouthDh.png */,
+				4BF98FE42818F0AC0007885E /* pm0025_00_BodyA1.png */,
+				4BF98FE22818F0AC0007885E /* pm0025_00_BodyB1.png */,
+				4BF98FE12818F0AC0007885E /* pm0025_00_Eye1.png */,
+				4BF98FE32818F0AC0007885E /* pm0025_00_Mouth1.png */,
+				4BF98FDE2818F0340007885E /* Pikachu.obj */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -293,7 +282,6 @@
 				4BBB858C2818BE5C00862284 /* ObjReader.cpp in Sources */,
 				4B8FDB4827E8145F0018374A /* glad.c in Sources */,
 				4BBB85802818BDAE00862284 /* Shader.cpp in Sources */,
-				4BBB856C28189D5E00862284 /* RotationStatus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

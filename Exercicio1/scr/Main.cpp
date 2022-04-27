@@ -3,12 +3,12 @@
 
 int main() {
 	map<string, Mesh*> meshs;
-	meshs["mesa"] = ObjReader::read("/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/trout.obj");
-	meshs["trout"] = ObjReader::read("/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/mesa01.obj");
+	meshs["obj1"] = ObjReader::read("/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/Pikachu.obj");
+    meshs["obj2"] = ObjReader::read("/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/Pikachu.obj");
     
 	map<string, char*> textures;
-	textures["mesa"] = "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/mesa01.bmp";
-	textures["trout"] = "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/soccer_ball.bmp";
+	textures["obj1"] = "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/PikachuDh.png";
+    textures["obj2"] = "/Users/douglasimmig/Desktop/TrabGA/Exercicio1/Objects/PikachuDh.png";
 
 	System system;
 
@@ -22,7 +22,7 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-	system.Run(meshs, textures, "mesa", "trout");
+	system.Run(meshs, textures, "obj1", "obj2");
 
 	system.Finish();
 
