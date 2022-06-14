@@ -31,7 +31,7 @@ int System::GLFWInit()
     glfwWindowHint (GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-	window = glfwCreateWindow( WIDTH, HEIGHT, "Trab GA", nullptr, nullptr );
+	window = glfwCreateWindow( WIDTH, HEIGHT, "LEITOR/VISUALIZADOR DE CENAS 3D COM OPENGL MODERNA", nullptr, nullptr );
 
 	glfwGetFramebufferSize( window, &screenWidth, &screenHeight );
 
