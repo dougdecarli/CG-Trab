@@ -81,6 +81,7 @@ Mesh* ObjReader::read(string filename)
     return mesh;
 }
 
+
 void ObjReader::material(Mesh* mesh, stringstream& sline) {
     string path;
     sline >> path;

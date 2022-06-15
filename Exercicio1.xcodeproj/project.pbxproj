@@ -12,7 +12,6 @@
 		4B082D022816F240003630DA /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B082D012816F240003630DA /* stb_image.cpp */; };
 		4B55464B28593100005EB64B /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55464928593100005EB64B /* Material.cpp */; };
 		4B554651285936A7005EB64B /* MtlReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55464F285936A7005EB64B /* MtlReader.cpp */; };
-		4B55465728594AB4005EB64B /* SystemGA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55465628594AB4005EB64B /* SystemGA.cpp */; };
 		4B55465A285957EC005EB64B /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B554658285957EC005EB64B /* SceneReader.cpp */; };
 		4B55465F28596398005EB64B /* SceneObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55465D28596398005EB64B /* SceneObject.cpp */; };
 		4B554661285970AF005EB64B /* TranslatePointsReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B554660285970AF005EB64B /* TranslatePointsReader.cpp */; };
@@ -60,7 +59,6 @@
 		4B55465328593879005EB64B /* pista.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista.obj; sourceTree = "<group>"; };
 		4B554654285938B1005EB64B /* pista.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista.mtl; sourceTree = "<group>"; };
 		4B554655285938B1005EB64B /* pista.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pista.jpg; sourceTree = "<group>"; };
-		4B55465628594AB4005EB64B /* SystemGA.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SystemGA.cpp; sourceTree = "<group>"; };
 		4B554658285957EC005EB64B /* SceneReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneReader.cpp; sourceTree = "<group>"; };
 		4B55465B2859583B005EB64B /* SceneReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
 		4B55465C2859591B005EB64B /* Scene.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Scene.txt; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				4B554660285970AF005EB64B /* TranslatePointsReader.cpp */,
 				4B082D012816F240003630DA /* stb_image.cpp */,
 				4B55464928593100005EB64B /* Material.cpp */,
-				4B55465628594AB4005EB64B /* SystemGA.cpp */,
 			);
 			path = scr;
 			sourceTree = "<group>";
@@ -322,7 +319,6 @@
 				4B55464B28593100005EB64B /* Material.cpp in Sources */,
 				4B554651285936A7005EB64B /* MtlReader.cpp in Sources */,
 				4B554661285970AF005EB64B /* TranslatePointsReader.cpp in Sources */,
-				4B55465728594AB4005EB64B /* SystemGA.cpp in Sources */,
 				4BBB858C2818BE5C00862284 /* ObjReader.cpp in Sources */,
 				4B8FDB4827E8145F0018374A /* glad.c in Sources */,
 				4BBB85802818BDAE00862284 /* Shader.cpp in Sources */,
