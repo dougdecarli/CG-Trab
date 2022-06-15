@@ -1,6 +1,5 @@
 #include "Mesh.h"
-
-
+ 
 Mesh::Mesh() {
     model = mat4(1.0f);
 }
