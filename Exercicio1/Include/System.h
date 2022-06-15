@@ -21,33 +21,34 @@
 // Headers
 #include "Shader.h"
 #include "AssetManager.h"
-#include "time.h"
+#include "Time.h"
 #include "Mesh.h"
+#include "TranslatePointsReader.h"
 #include "ObjReader.h"
+#include "Camera.h"
 
 class System
 {
 private:
-	// Screen
-	const GLint WIDTH = 1920, HEIGHT = 1080;
-	int screenWidth, screenHeight;
+    // Screen
+    const GLint WIDTH = 1920, HEIGHT = 1080;
+    int screenWidth, screenHeight;
 
 public:
-	GLFWwindow* window;
-	Shader coreShader;
+    GLFWwindow* window;
+    Shader coreShader;
 
 public:
-	System();
-	~System();
+    System();
+    ~System();
 
-	int GLFWInit();
-	int OpenGLSetup();
-	int SystemSetup();
+    int GLFWInit();
+    int OpenGLSetup();
+    int SystemSetup();
 
-	void Run(map<string, Mesh*> meshs, map<string, char*> textures, string initial);
-    void AddObject(Mesh* mesh);
+    void Run(vector<Mesh*> meshs, std::shared_ptr<Camera> cam);
 
-	void Finish();
+    void Finish();
 
 };
 

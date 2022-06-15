@@ -17,6 +17,9 @@ void Texture::Load(char* path, char* textureUniformName, GLuint shaderProgram, G
 
     glGenTextures( 1, &textureID );
 
+    int width, height;
+    unsigned char *image;
+
     textureLocation = glGetUniformLocation( shaderProgram, textureUniformName );
 
     glActiveTexture( GL_TEXTURE0 + this->textureNum );

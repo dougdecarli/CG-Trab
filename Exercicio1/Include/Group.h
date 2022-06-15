@@ -44,7 +44,16 @@ public:
         name = n;
     }
 
+    string getName() {
+        return name;
+    }
+
     void setMaterial(string n) {
         material = n;
     }
+
+    string getMaterial() {
+        return material;
+    }
 };
+

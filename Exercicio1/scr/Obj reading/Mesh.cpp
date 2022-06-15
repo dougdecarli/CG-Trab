@@ -1,12 +1,16 @@
 #include "Mesh.h"
 
-Mesh::Mesh() {}
+
+Mesh::Mesh() {
+    model = mat4(1.0f);
+}
 
 Mesh::~Mesh() {
     groups.clear();
     vertices.clear();
     normais.clear();
     textures.clear();
+    materials.clear();
 }
 
 glm::vec3* Mesh::vertice(int id) {
@@ -42,4 +46,13 @@ int Mesh::addTexture(vec2* vec)
 int Mesh::addGroup(Group* group) {
     groups.push_back(group);
     return groups.size() - 1;
+}
+
+int Mesh::addMaterial(string name, Material* material) {
+    materials[name] = material;
+    return materials.size() - 1;
+}
+
+void Mesh::translateModel(vec3 initialTrans) {
+    model = glm::translate(model, initialTrans);
 }

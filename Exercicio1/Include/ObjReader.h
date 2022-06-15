@@ -2,6 +2,7 @@
 #include <string>
 #include "Mesh.h"
 #include "Group.h"
+#include "MtlReader.h"
 
 using namespace std;
 
@@ -17,3 +18,5 @@ public:
     static void face(Group* group, stringstream& sline);
     static void usemtl(Group* group, stringstream& sline);
 };
+
+

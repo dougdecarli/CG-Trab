@@ -10,6 +10,12 @@
 		4B082CBE2816271F003630DA /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B082CBD2816271F003630DA /* Main.cpp */; };
 		4B082CE42816D1FE003630DA /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B082CE22816D1FE003630DA /* Camera.cpp */; };
 		4B082D022816F240003630DA /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B082D012816F240003630DA /* stb_image.cpp */; };
+		4B55464B28593100005EB64B /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55464928593100005EB64B /* Material.cpp */; };
+		4B554651285936A7005EB64B /* MtlReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55464F285936A7005EB64B /* MtlReader.cpp */; };
+		4B55465728594AB4005EB64B /* SystemGA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55465628594AB4005EB64B /* SystemGA.cpp */; };
+		4B55465A285957EC005EB64B /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B554658285957EC005EB64B /* SceneReader.cpp */; };
+		4B55465F28596398005EB64B /* SceneObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B55465D28596398005EB64B /* SceneObject.cpp */; };
+		4B554661285970AF005EB64B /* TranslatePointsReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B554660285970AF005EB64B /* TranslatePointsReader.cpp */; };
 		4B70CCE4281617D0003F681F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B70CCDC281617D0003F681F /* Texture.cpp */; };
 		4B70CCE5281617D0003F681F /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B70CCDD281617D0003F681F /* System.cpp */; };
 		4B8FDB1C27E80A050018374A /* libGLEW.2.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8FDB1A27E808930018374A /* libGLEW.2.2.0.dylib */; };
@@ -46,6 +52,22 @@
 		4B082CE52816EEAD003630DA /* SOIL.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = SOIL.lib; path = SOIL2/lib/SOIL.lib; sourceTree = "<group>"; };
 		4B082D012816F240003630DA /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
 		4B082D032816F249003630DA /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		4B55464928593100005EB64B /* Material.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		4B55464A28593100005EB64B /* Material.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		4B55464D285933BC005EB64B /* TranslatePointsReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslatePointsReader.h; sourceTree = "<group>"; };
+		4B55464F285936A7005EB64B /* MtlReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MtlReader.cpp; sourceTree = "<group>"; };
+		4B554650285936A7005EB64B /* MtlReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MtlReader.h; sourceTree = "<group>"; };
+		4B55465328593879005EB64B /* pista.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista.obj; sourceTree = "<group>"; };
+		4B554654285938B1005EB64B /* pista.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista.mtl; sourceTree = "<group>"; };
+		4B554655285938B1005EB64B /* pista.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pista.jpg; sourceTree = "<group>"; };
+		4B55465628594AB4005EB64B /* SystemGA.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SystemGA.cpp; sourceTree = "<group>"; };
+		4B554658285957EC005EB64B /* SceneReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneReader.cpp; sourceTree = "<group>"; };
+		4B55465B2859583B005EB64B /* SceneReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
+		4B55465C2859591B005EB64B /* Scene.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Scene.txt; sourceTree = "<group>"; };
+		4B55465D28596398005EB64B /* SceneObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneObject.cpp; sourceTree = "<group>"; };
+		4B55465E28596398005EB64B /* SceneObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneObject.h; sourceTree = "<group>"; };
+		4B554660285970AF005EB64B /* TranslatePointsReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TranslatePointsReader.cpp; sourceTree = "<group>"; };
+		4B554662285970E2005EB64B /* pista_coords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista_coords.txt; sourceTree = "<group>"; };
 		4B70CCD3281617C5003F681F /* System.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
 		4B70CCD4281617C5003F681F /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		4B70CCD5281617C5003F681F /* Texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
@@ -110,7 +132,12 @@
 				4B70CCD8281617C5003F681F /* Shader.h */,
 				4B082CE32816D1FE003630DA /* Camera.h */,
 				4B70CCD3281617C5003F681F /* System.h */,
+				4B55464D285933BC005EB64B /* TranslatePointsReader.h */,
+				4B554650285936A7005EB64B /* MtlReader.h */,
+				4B55464A28593100005EB64B /* Material.h */,
 				4B70CCD5281617C5003F681F /* Texture.h */,
+				4B55465E28596398005EB64B /* SceneObject.h */,
+				4B55465B2859583B005EB64B /* SceneReader.h */,
 			);
 			path = Include;
 			sourceTree = "<group>";
@@ -133,7 +160,10 @@
 				4B70CCDD281617D0003F681F /* System.cpp */,
 				4B70CCDC281617D0003F681F /* Texture.cpp */,
 				4B082CE22816D1FE003630DA /* Camera.cpp */,
+				4B554660285970AF005EB64B /* TranslatePointsReader.cpp */,
 				4B082D012816F240003630DA /* stb_image.cpp */,
+				4B55464928593100005EB64B /* Material.cpp */,
+				4B55465628594AB4005EB64B /* SystemGA.cpp */,
 			);
 			path = scr;
 			sourceTree = "<group>";
@@ -141,6 +171,10 @@
 		4B70CCED281617E8003F681F /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				4B554655285938B1005EB64B /* pista.jpg */,
+				4B554662285970E2005EB64B /* pista_coords.txt */,
+				4B554654285938B1005EB64B /* pista.mtl */,
+				4B55465328593879005EB64B /* pista.obj */,
 				4BF98FDF2818F0340007885E /* Pikachu.mtl */,
 				4BF98FE02818F0AC0007885E /* PikachuDh.png */,
 				4BF98FE52818F0AC0007885E /* PikachuEyeDh.png */,
@@ -151,6 +185,7 @@
 				4BF98FE12818F0AC0007885E /* pm0025_00_Eye1.png */,
 				4BF98FE32818F0AC0007885E /* pm0025_00_Mouth1.png */,
 				4BF98FDE2818F0340007885E /* Pikachu.obj */,
+				4B55465C2859591B005EB64B /* Scene.txt */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -206,10 +241,13 @@
 		4BBB8568281896F400862284 /* Obj reading */ = {
 			isa = PBXGroup;
 			children = (
+				4B554658285957EC005EB64B /* SceneReader.cpp */,
 				4BBB85812818BDE400862284 /* Mesh.cpp */,
 				4BBB85842818BE1000862284 /* Group.cpp */,
 				4BBB85872818BE3700862284 /* Face.cpp */,
+				4B55464F285936A7005EB64B /* MtlReader.cpp */,
 				4BBB858A2818BE5C00862284 /* ObjReader.cpp */,
+				4B55465D28596398005EB64B /* SceneObject.cpp */,
 			);
 			path = "Obj reading";
 			sourceTree = "<group>";
@@ -272,13 +310,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BBB85892818BE3700862284 /* Face.cpp in Sources */,
+				4B55465A285957EC005EB64B /* SceneReader.cpp in Sources */,
 				4B082D022816F240003630DA /* stb_image.cpp in Sources */,
+				4B55465F28596398005EB64B /* SceneObject.cpp in Sources */,
 				4B70CCE5281617D0003F681F /* System.cpp in Sources */,
 				4B082CE42816D1FE003630DA /* Camera.cpp in Sources */,
 				4B70CCE4281617D0003F681F /* Texture.cpp in Sources */,
 				4B082CBE2816271F003630DA /* Main.cpp in Sources */,
 				4BBB85832818BDE400862284 /* Mesh.cpp in Sources */,
 				4BBB85862818BE1000862284 /* Group.cpp in Sources */,
+				4B55464B28593100005EB64B /* Material.cpp in Sources */,
+				4B554651285936A7005EB64B /* MtlReader.cpp in Sources */,
+				4B554661285970AF005EB64B /* TranslatePointsReader.cpp in Sources */,
+				4B55465728594AB4005EB64B /* SystemGA.cpp in Sources */,
 				4BBB858C2818BE5C00862284 /* ObjReader.cpp in Sources */,
 				4B8FDB4827E8145F0018374A /* glad.c in Sources */,
 				4BBB85802818BDAE00862284 /* Shader.cpp in Sources */,

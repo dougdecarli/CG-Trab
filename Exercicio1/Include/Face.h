@@ -21,10 +21,10 @@ public:
     }
 
     vector<int> getNormais() {
-        return vertices;
+        return normais;
     }
 
     vector<int> getTextures() {
-        return vertices;
+        return textures;
     }
 };

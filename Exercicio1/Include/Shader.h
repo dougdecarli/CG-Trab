@@ -134,6 +134,7 @@ public:
 
     void setMatrix4fv(const std::string& name, glm::mat4& matrix);
     void setVec3(const std::string& name, const glm::vec3& vec3);
+    void setFloat(const std::string& name, float f);
     
     void UseTexture( std::string textureName );
     void LoadTexture( char* path, char* textureUniformName, std::string textureName );
@@ -141,3 +142,4 @@ public:
 };
 
 #endif
+
