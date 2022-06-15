@@ -67,7 +67,6 @@
 		4B55465D28596398005EB64B /* SceneObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneObject.cpp; sourceTree = "<group>"; };
 		4B55465E28596398005EB64B /* SceneObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneObject.h; sourceTree = "<group>"; };
 		4B554660285970AF005EB64B /* TranslatePointsReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TranslatePointsReader.cpp; sourceTree = "<group>"; };
-		4B554662285970E2005EB64B /* pista_coords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pista_coords.txt; sourceTree = "<group>"; };
 		4B70CCD3281617C5003F681F /* System.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
 		4B70CCD4281617C5003F681F /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		4B70CCD5281617C5003F681F /* Texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
@@ -94,13 +93,14 @@
 		4BBB85842818BE1000862284 /* Group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Group.cpp; sourceTree = "<group>"; };
 		4BBB85872818BE3700862284 /* Face.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Face.cpp; sourceTree = "<group>"; };
 		4BBB858A2818BE5C00862284 /* ObjReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ObjReader.cpp; sourceTree = "<group>"; };
+		4BD7EDDD285A21BA008D5B24 /* Pikachu.mtl.bak */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pikachu.mtl.bak; sourceTree = "<group>"; };
+		4BD7EDDE285A21BA008D5B24 /* pm0025_00_Mouth1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_Mouth1.png; sourceTree = "<group>"; };
+		4BD7EDDF285A21BA008D5B24 /* pm0025_00_BodyA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_BodyA1.png; sourceTree = "<group>"; };
+		4BD7EDE0285A21BA008D5B24 /* pm0025_00_Eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_Eye1.png; sourceTree = "<group>"; };
+		4BD7EDE1285A21BA008D5B24 /* pm0025_00_BodyB1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_BodyB1.png; sourceTree = "<group>"; };
 		4BF98FDE2818F0340007885E /* Pikachu.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pikachu.obj; sourceTree = "<group>"; };
 		4BF98FDF2818F0340007885E /* Pikachu.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pikachu.mtl; sourceTree = "<group>"; };
 		4BF98FE02818F0AC0007885E /* PikachuDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuDh.png; sourceTree = "<group>"; };
-		4BF98FE12818F0AC0007885E /* pm0025_00_Eye1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_Eye1.png; sourceTree = "<group>"; };
-		4BF98FE22818F0AC0007885E /* pm0025_00_BodyB1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_BodyB1.png; sourceTree = "<group>"; };
-		4BF98FE32818F0AC0007885E /* pm0025_00_Mouth1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_Mouth1.png; sourceTree = "<group>"; };
-		4BF98FE42818F0AC0007885E /* pm0025_00_BodyA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pm0025_00_BodyA1.png; sourceTree = "<group>"; };
 		4BF98FE52818F0AC0007885E /* PikachuEyeDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuEyeDh.png; sourceTree = "<group>"; };
 		4BF98FE62818F0AC0007885E /* PikachuHohoDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuHohoDh.png; sourceTree = "<group>"; };
 		4BF98FE72818F0AC0007885E /* PikachuMouthDh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PikachuMouthDh.png; sourceTree = "<group>"; };
@@ -171,8 +171,12 @@
 		4B70CCED281617E8003F681F /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				4BD7EDDD285A21BA008D5B24 /* Pikachu.mtl.bak */,
+				4BD7EDDF285A21BA008D5B24 /* pm0025_00_BodyA1.png */,
+				4BD7EDE1285A21BA008D5B24 /* pm0025_00_BodyB1.png */,
+				4BD7EDE0285A21BA008D5B24 /* pm0025_00_Eye1.png */,
+				4BD7EDDE285A21BA008D5B24 /* pm0025_00_Mouth1.png */,
 				4B554655285938B1005EB64B /* pista.jpg */,
-				4B554662285970E2005EB64B /* pista_coords.txt */,
 				4B554654285938B1005EB64B /* pista.mtl */,
 				4B55465328593879005EB64B /* pista.obj */,
 				4BF98FDF2818F0340007885E /* Pikachu.mtl */,
@@ -180,10 +184,6 @@
 				4BF98FE52818F0AC0007885E /* PikachuEyeDh.png */,
 				4BF98FE62818F0AC0007885E /* PikachuHohoDh.png */,
 				4BF98FE72818F0AC0007885E /* PikachuMouthDh.png */,
-				4BF98FE42818F0AC0007885E /* pm0025_00_BodyA1.png */,
-				4BF98FE22818F0AC0007885E /* pm0025_00_BodyB1.png */,
-				4BF98FE12818F0AC0007885E /* pm0025_00_Eye1.png */,
-				4BF98FE32818F0AC0007885E /* pm0025_00_Mouth1.png */,
 				4BF98FDE2818F0340007885E /* Pikachu.obj */,
 				4B55465C2859591B005EB64B /* Scene.txt */,
 			);
