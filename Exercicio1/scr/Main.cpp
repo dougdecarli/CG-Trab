@@ -24,6 +24,8 @@ int main() {
         string meshPath = sceneObj->path;
         Mesh* mesh = ObjReader::read(meshPath);
         mesh->translateModel(sceneObj->initalTrans);
+        mesh->rotateModel(sceneObj->initalRot);
+        mesh->scaleModel(sceneObj->initalEscale);
         meshs.push_back(mesh);
     }
     

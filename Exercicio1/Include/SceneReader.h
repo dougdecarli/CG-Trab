@@ -98,9 +98,11 @@ public:
                 sceneObject->path = path;
             } else if (linha == "#ii") {
                 string rot, trans, escala;
-                float transx, transy, transz;
-                sline >> transx >> transy >> transz;
+                float rotx, roty, rotz, transx, transy, transz, scalex, scaley, scalez;
+                sline >> transx >> transy >> transz >> rotx >> roty >> rotz >> scalex >> scaley >> scalez;
                 sceneObject->initalTrans = vec3(transx, transy, transz);
+                sceneObject->initalRot = vec3(rotx, roty, rotz);
+                sceneObject->initalEscale = vec3(scalex, scaley, scalez);
             } else if (linha == "#iii") {
                 
             }

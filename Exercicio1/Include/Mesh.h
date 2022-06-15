@@ -32,6 +32,8 @@ public:
     int addGroup(Group*);
     int addMaterial(string name, Material* material);
     void translateModel(vec3 initialTrans);
+    void scaleModel(vec3 initalScale);
+    void rotateModel(vec3 initalRotation);
     glm::mat4 model;
     
     vector<Group*> getGroups() {

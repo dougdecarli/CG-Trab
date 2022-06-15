@@ -14,5 +14,7 @@ public:
     ~SceneObject();
     string path;
     int objId;
-    vec3* initalRot, initalEscale, initalTrans;
+    vec3 initalEscale;
+    vec3 initalTrans;
+    vec3 initalRot;
 };

@@ -55,3 +55,13 @@ int Mesh::addMaterial(string name, Material* material) {
 void Mesh::translateModel(vec3 initialTrans) {
     model = glm::translate(model, initialTrans);
 }
+
+void Mesh::scaleModel(vec3 initalScale) {
+    model = glm::scale(model, initalScale);
+}
+
+void Mesh::rotateModel(vec3 initalRotation) {
+    model = glm::rotate(model, 2.0f, initalRotation);
+}
+
+
